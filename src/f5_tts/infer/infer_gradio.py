@@ -4,11 +4,11 @@
 from dotenv import load_dotenv
 import os
 
-# 加载 .env 文件
+# load .env
 load_dotenv()
 
-# 检查环境变量是否被加载
-print("PYTORCH_ENABLE_MPS_FALLBACK:", os.getenv("PYTORCH_ENABLE_MPS_FALLBACK"))
+if os.getenv("PYTORCH_ENABLE_MPS_FALLBACK") == "1":
+    print("You are using the version optimized for Apple silicon.")
 
 import re
 import tempfile

@@ -28,6 +28,12 @@ conda activate f5-tts
 
 # Install pytorch with your CUDA version, e.g.
 pip install torch==2.3.0+cu118 torchaudio==2.3.0+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+
+# If you are developing on Apple silicon, you can use the .apple_silicon.env file
+cp .apple_silicon.env .env
+pip3 install poetry --user
+poetry install
+poetry run f5-tts_infer-gradio
 ```
 
 Then you can choose from a few options below:
