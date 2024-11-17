@@ -67,6 +67,7 @@ pip install -e .
 
 # or use poetry
 pip3 install poetry --user
+cp pyproject.apple_silicon.toml pyproject.toml 
 poetry install
 poetry run f5-tts_infer-gradio
 ```
