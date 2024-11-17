@@ -2,9 +2,15 @@
 # Make adjustments inside functions, and consider both gradio and cli scripts if need to change func output format
 import os
 import sys
+import platform
 
-os.environ["PYTOCH_ENABLE_MPS_FALLBACK"] = "1"  # for MPS device compatibility
 sys.path.append(f"../../{os.path.dirname(os.path.abspath(__file__))}/third_party/BigVGAN/")
+
+# for MPS device compatibility
+if platform.machine() == "arm64":
+    print("You are using an Apple silicon device.")
+    os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+
 
 import hashlib
 import re
