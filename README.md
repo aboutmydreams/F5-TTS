@@ -64,6 +64,7 @@ cp .apple_silicon.env .env
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
+f5-tts_infer-gradio
 
 # or use poetry
 pip3 install poetry --user
