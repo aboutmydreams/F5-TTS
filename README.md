@@ -28,12 +28,6 @@ conda activate f5-tts
 
 # Install pytorch with your CUDA version, e.g.
 pip install torch==2.3.0+cu118 torchaudio==2.3.0+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
-
-# If you are developing on Apple silicon, you can use the .apple_silicon.env file
-cp .apple_silicon.env .env
-pip3 install poetry --user
-poetry install
-poetry run f5-tts_infer-gradio
 ```
 
 Then you can choose from a few options below:
@@ -52,14 +46,33 @@ cd F5-TTS
 # git submodule update --init --recursive  # (optional, if need bigvgan)
 pip install -e .
 ```
+
 If initialize submodule, you should add the following code at the beginning of `src/third_party/BigVGAN/bigvgan.py`.
+
 ```python
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 ```
 
+If you are developing on Apple silicon, you can use the .apple_silicon.env file:
+
+```bash
+cp .apple_silicon.env .env
+
+# use virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+
+# or use poetry
+pip3 install poetry --user
+poetry install
+poetry run f5-tts_infer-gradio
+```
+
 ### 3. Docker usage
+
 ```bash
 # Build from Dockerfile
 docker build -t f5tts:v1 .
@@ -67,7 +80,6 @@ docker build -t f5tts:v1 .
 # Or pull from GitHub Container Registry
 docker pull ghcr.io/swivid/f5-tts:main
 ```
-
 
 ## Inference
 
