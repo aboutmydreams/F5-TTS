@@ -58,19 +58,13 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 If you are developing on Apple silicon, you can use the .apple_silicon.env file:
 
 ```bash
-cp .apple_silicon.env .env
+export PYTORCH_ENABLE_MPS_FALLBACK=1
 
 # use virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
 f5-tts_infer-gradio
-
-# or use poetry
-pip3 install poetry --user
-cp pyproject.apple_silicon.toml pyproject.toml 
-poetry install
-poetry run f5-tts_infer-gradio
 ```
 
 ### 3. Docker usage

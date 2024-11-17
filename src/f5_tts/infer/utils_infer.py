@@ -2,8 +2,15 @@
 # Make adjustments inside functions, and consider both gradio and cli scripts if need to change func output format
 import os
 import sys
+import platform
 
 sys.path.append(f"../../{os.path.dirname(os.path.abspath(__file__))}/third_party/BigVGAN/")
+
+if platform.machine() == "arm64":
+    print("You are using an Apple silicon device.")
+    os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+else:
+    print("You are not using an Apple silicon device.")
 
 import hashlib
 import re

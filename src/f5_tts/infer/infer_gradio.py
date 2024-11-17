@@ -1,15 +1,6 @@
 # ruff: noqa: E402
 # Above allows ruff to ignore E402: module level import not at top of file
 
-from dotenv import load_dotenv
-import os
-
-# load .env
-load_dotenv()
-
-if os.getenv("PYTORCH_ENABLE_MPS_FALLBACK") == "1":
-    print("You are using the version optimized for Apple silicon.")
-
 import re
 import tempfile
 from collections import OrderedDict
